@@ -9,7 +9,7 @@
 - Totalmente em python.
 - Versão do python: 3.13.2
 - O controle do crud está no arquivo [crud.py](./crud.py).
-- Os prints e inputs estão no arquivo [app.py](./app.py).a
+- Os prints e inputs estão no arquivo [app.py](./app.py).
 
 ## Instruções
 
