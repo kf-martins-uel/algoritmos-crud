@@ -27,10 +27,6 @@ def listarTarefas() -> list[dict]:
     """Retorna a lista de tarefas."""
     return tarefas
 
-def deletarTarefa(tarefa: dict):
-    """Remove a primeira ocorrência da tarefa dentro da lista de tarefas. Não faz busca, será removido exatamente a tarefa dada."""
-    tarefas.remove(tarefa)
-
 def deletarTarefaID(tarefaID: int):
     """Remove o item da lista de tarefas. Isso faz com que todos os ID depois da tarefa seja diminuido em 1."""
     tarefas.pop(tarefaID)
