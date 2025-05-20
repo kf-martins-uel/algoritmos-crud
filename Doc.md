@@ -18,6 +18,8 @@ Este projeto é um gerenciador de tarefas simples em Python, que permite criar, 
 
 ## Funções do Arquivo `crud.py`
 
+- [Clique aqui para ver o fluxograma das funções.](./Fluxograms/README.md)
+
 ### `adicionarTarefa(tarefa: dict)`
 
 Adiciona uma nova tarefa à lista de tarefas.
@@ -52,6 +54,7 @@ Retorna a lista completa de tarefas.
 ### `deletarTarefaID(tarefaID: int)`
 
 Remove a tarefa do índice informado.
+
 - **Parâmetros:**
   - `tarefaID` (int): Índice da tarefa a ser removida.
 - **Retorno:** Nenhum.

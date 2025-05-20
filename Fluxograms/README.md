@@ -1,6 +1,9 @@
 # Fluxogramas do programa
 
-Todos fluxogramas serão das funções encontradas no arquivo [crud.py](../crud.py). 
+## Observação
+
+Todos fluxogramas serão das funções encontradas no arquivo [crud.py](../crud.py).
+O arquivo [app.py](../app.py) contém somente instruções de prints e inputs. Algumas de suas funções chamam as funções de `crud.py` para manipular as tarefas, mas essas funções não manipulam elas por si mesmas. São mais detalhes de controle do loop do programa e visualização das informações.
 
 ### Variável `tarefas`
 
