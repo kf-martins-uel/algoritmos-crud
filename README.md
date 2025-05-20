@@ -20,3 +20,9 @@ Não necessita de nenhuma biblioteca. Apenas o python.
     ```bash
     python ./app.py
     ```
+
+### [Documentação](./Doc.md)
+
+Toda documentação pode ser encontrada no arquivo [Doc.md](./Doc.md). Essa documentação foi realizada utilizando o Copilot em modo _Agent_, com modelo _GPT-4.1_.
+
+- O prompt foi para realizar a documentação simples e colcoar em markdown.
