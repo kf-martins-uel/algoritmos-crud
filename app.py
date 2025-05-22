@@ -3,7 +3,9 @@ import crud
 tarefaExemplo = {
     'titulo':'Comprar arroz',
     'desc': 'Ir no mercado tal e comprar arroz tal',
-    'custo': -20.00
+    'custo': -30.00,
+    'data': '2025-05-22', 
+    'repeat': 30 # Repetir a cada 30 dias
 }
 
 def adcionarTarefa():
@@ -11,12 +13,20 @@ def adcionarTarefa():
     titulo = input('Digite o título: ')
     desc = input('Digite a descrição: ')
     custo = input('Digite o custo (postivo para ganhos e negativo para perdas): ')
-    crud.adicionarTarefa({'titulo': titulo, 'desc': desc, 'custo': float(custo) if custo.isnumeric() else custo})
+    data = input('Digite a data (formato DD-MM-AAAA): ')
+    repeat = input('Digite o repeat (-1 para todo dia, 0 para só na data, ou outro número para a cada X dias): ')
+    crud.adicionarTarefa({
+        'titulo': titulo,
+        'desc': desc,
+        'custo': float(custo) if custo.isnumeric() else custo,
+        'data': data,
+        'repeat': int(repeat) if repeat.isnumeric() else repeat
+    })
 
 def listarTarefas():
     print('==== TODAS TAREFAS ====')
-    for i, tarefa in enumerate(crud.tarefas):
-        print(f"ID {i}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}\n")
+    for i, tarefa in enumerate(crud.listarTarefas()):
+        print(f"ID {i}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}\nData: {tarefa['data']}\nRepeat: {tarefa['repeat']}\n")
     print()
 
 def buscarTarefa():
@@ -27,7 +37,7 @@ def buscarTarefa():
     if idtarefa and idtarefa.isnumeric():
         tarefa = crud.buscarTarefaID(int(idtarefa))
         if tarefa:
-            print(f"\nID {idtarefa}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}")
+            print(f"\nID {idtarefa}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}\nData: {tarefa['data']}\nRepeat: {tarefa['repeat']}")
         else:
             print("Tarefa não encontrada. ")
         return
@@ -41,13 +51,20 @@ def buscarTarefa():
          busca['desc'] = desc
     custo = input('Digite o custo: ')
     if custo:
-         busca['custo'] = custo
+         busca['custo'] = float(custo) if custo.isnumeric() else custo
+    data = input('Digite a data (formato AAAA-MM-DD): ')
+    if data:
+         busca['data'] = data
+    repeat = input('Digite o repeat (-1 para todo dia, 0 para só na data, ou outro número para a cada X dias): ')
+    if repeat:
+         busca['repeat'] = int(repeat) if repeat.isnumeric() else repeat
     print('\nParamêtros de busca: ', busca)
 
     print('\nTarefas encontradas: ')
     tarefas = crud.buscarTarefa(busca)
     for i in tarefas:
-        print(f"ID {i}: {crud.tarefas[i]['titulo']}    Custo: {crud.tarefas[i]['custo']: >8.2f}")
+        t = crud.tarefas[i]
+        print(f"ID {i}: {t['titulo']}    Custo: {t['custo']}    Data: {t['data']}    Repeat: {t['repeat']}")
 
 def atualizarTarefa():
     print('==== ATUALIZANDO TAREFA ====')
@@ -56,7 +73,7 @@ def atualizarTarefa():
     ntarefa = crud.buscarTarefaID(idtarefa) 
 
     print(f'-- Tarefa --')
-    print(f'\nID: {idtarefa}\nTítulo: {ntarefa["titulo"]}\nDescição: {ntarefa["desc"]}\nCusto: {ntarefa["custo"]}')
+    print(f'\nID: {idtarefa}\nTítulo: {ntarefa["titulo"]}\nDescição: {ntarefa["desc"]}\nCusto: {ntarefa["custo"]}\nData: {ntarefa["data"]}\nRepeat: {ntarefa["repeat"]}')
     print("\nDeixe em branco para continuar o mesmo valor.\n")
 
     titulo = input('Digite o novo título: ')
@@ -67,7 +84,13 @@ def atualizarTarefa():
          ntarefa['desc'] = desc
     custo = input('Digite o novo custo: ')
     if custo:
-         ntarefa['custo'] = custo
+         ntarefa['custo'] = float(custo) if custo.isnumeric() else custo
+    data = input('Digite a nova data (formato AAAA-MM-DD): ')
+    if data:
+         ntarefa['data'] = data
+    repeat = input('Digite o novo repeat (-1 para todo dia, 0 para só na data, ou outro número para a cada X dias): ')
+    if repeat:
+         ntarefa['repeat'] = int(repeat) if repeat.isnumeric() else repeat
     crud.atualizarTarefa(idtarefa, ntarefa)
 
 def deletarTarefa():
@@ -77,10 +100,10 @@ def deletarTarefa():
     if idtarefa and idtarefa.isnumeric():
         tarefa = crud.buscarTarefaID(int(idtarefa))
         if tarefa:
-            print(f"\nID {idtarefa}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}")
+            print(f"\nID {idtarefa}: {tarefa['titulo']}\nDescrição: {tarefa['desc']}\nCusto: {tarefa['custo']}\nData: {tarefa['data']}\nRepeat: {tarefa['repeat']}")
             c = input("Tem certeza de que deseja deletar a tarefa? [S]/[N]").lower()
             if c == 's':
-                 crud.deletarTarefaID(idtarefa)
+                 crud.deletarTarefaID(int(idtarefa))
 
 def imprimirMenu():
     print("==== GERENCIADOR DE TAREFAS COM CUSTO ====")

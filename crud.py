@@ -1,15 +1,16 @@
 tarefas: list[dict] = [] 
 """
 Lista de tarefas\n
-Cada tarefa é um dict com chaves titulo, desc e custo.
-O ID da tarefa será o seu indice na lista de tarefas.
+Cada tarefa é um dict com chaves titulo, desc e custo, data e repeat.
+O ID da tarefa será o seu indice na lista de tarefas.\n
+Caso repeat seja -1, a tarefa deve ser repetida todos os dias. Caso seja 0, deve ser repetida apenas na data. Qualquer outro valor, significa que a tarefa deve ser repetida a cada {repeat} dias a partir da data
 """
 
 def adicionarTarefa(tarefa: dict):
     """Adiciona uma tarefa"""
     tarefas.append(tarefa)
 
-#[i for i, val in enumerate(d) if all(val.get(k) == v for k, v in busca.items())]
+#[i             for i, val in enumerate(d)        if all(val.get(k) == v for k, v in busca.items())]
 def buscarTarefa(buscaParametros: dict) -> list[dict]:
     """Retorna uma lista com os ID correspondentes às tarefas que batem com os paramêtros da busca."""
     indices = [i for i, val in enumerate(tarefas) if all(val.get(k) == v for k, v in buscaParametros.items())]

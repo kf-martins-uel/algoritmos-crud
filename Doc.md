@@ -25,7 +25,15 @@ Este projeto é um gerenciador de tarefas simples em Python, que permite criar, 
 Adiciona uma nova tarefa à lista de tarefas.
 
 - **Parâmetros:**
-  - `tarefa` (dict): Dicionário com as chaves 'titulo', 'desc' e 'custo'.
+  - `tarefa` (dict): Dicionário com as chaves 'titulo', 'desc', 'custo', 'data' e 'repeat'.
+    - `titulo` (str): Título da tarefa.
+    - `desc` (str): Descrição da tarefa.
+    - `custo` (float): Valor positivo para ganhos e negativo para perdas.
+    - `data` (str): Data da tarefa (formato AAAA-MM-DD).
+    - `repeat` (int):
+        - `-1`: Tarefa repetida todos os dias.
+        - `0`: Tarefa executada apenas na data.
+        - Outro valor: tarefa repetida a cada X dias a partir da data.
 - **Retorno:** Nenhum.
 
 ### `buscarTarefa(buscaParametros: dict) -> list[dict]`
@@ -33,7 +41,7 @@ Adiciona uma nova tarefa à lista de tarefas.
 Busca tarefas que correspondam aos parâmetros fornecidos.
 
 - **Parâmetros:**
-  - `buscaParametros` (dict): Dicionário com os campos a serem buscados (ex: {'titulo': 'Exemplo'}).
+  - `buscaParametros` (dict): Dicionário com os campos a serem buscados (ex: {'titulo': 'Exemplo', 'data': '2025-05-22', 'repeat': 30}).
 - **Retorno:** Lista de IDs (índices) das tarefas que correspondem à busca.
 
 ### `buscarTarefaID(id: int) -> dict`
@@ -46,7 +54,7 @@ Retorna a tarefa correspondente ao ID informado.
 
 ### `listarTarefas() -> list[dict]`
 
-Retorna a lista completa de tarefas.
+Retorna a lista completa de tarefas, cada uma contendo os campos 'titulo', 'desc', 'custo', 'data' e 'repeat'.
 
 - **Parâmetros:** Nenhum.
 - **Retorno:** Lista de dicionários das tarefas.
@@ -80,11 +88,11 @@ Exibe todas as tarefas cadastradas.
 
 ### `buscarTarefa()`
 
-Permite buscar tarefas por ID ou por parâmetros (título, descrição, custo).
+Permite buscar tarefas por ID ou por parâmetros (título, descrição, custo, data, repeat).
 
 ### `atualizarTarefa()`
 
-Permite atualizar os dados de uma tarefa existente.
+Permite atualizar os dados de uma tarefa existente, incluindo data e repeat.
 
 ### `deletarTarefa()`
 

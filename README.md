@@ -23,8 +23,12 @@ Não necessita de nenhuma biblioteca. Apenas o python.
     python ./app.py
     ```
 
+### [Relatório](./Relatório.md)
+
+Relátorio de desenvolvimento pode ser encontrado no arquivo [Relatório.md](./Relatório.md).
+
 ### [Documentação](./Doc.md)
 
-Toda documentação pode ser encontrada no arquivo [Doc.md](./Doc.md). Essa documentação foi realizada utilizando o Copilot em modo _Agent_, com modelo _GPT-4.1_. Os detalhes importantes e principais foram revisados e reescritos manualmente.
+Toda documentação pode ser encontrada no arquivo [Doc.md](./Doc.md). Essa documentação foi realizada com ajuda do Copilot em modo _Agent_, com modelo _GPT-4.1_. As informações principais foram escritos manualmente, como a estrutura de arquivos, arquivo de fluxogramas e observações. Todos outros detalhes foram revisados e reescrito.
 
-> Doc.md: Isso foi apenas um teste,
+> Doc.md: Isso foi apenas um teste
